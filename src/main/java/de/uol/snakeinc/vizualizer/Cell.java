@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Cell extends Rectangle {
 
-    public  Cell (int[][] cells, int i, int j) {
+    public  Cell () {
         super.setHeight(20);
         super.setWidth(20);
         this.setFill(Paint.valueOf("BLACK"));

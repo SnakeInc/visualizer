@@ -33,8 +33,7 @@ public class Board extends GridPane {
      public void initializeCells() {
           for (int i=0; i< game.getWidth(); i++) {
                for (int j=0; j< game.getHeight(); j++) {
-                    Rectangle cell = new Rectangle();
-                    cell.setFill(Paint.valueOf("Black"));
+                    Cell cell = new Cell();
                     this.add(cell,i,j);
                }
           }
