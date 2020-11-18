@@ -56,4 +56,8 @@ public class FileChooserDialog extends VBox {
     public File getActualFile() {
         return actualFile;
     }
+
+    public Boolean checkFile() {
+        return actualFile != null;
+    }
 }
