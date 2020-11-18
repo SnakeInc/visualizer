@@ -7,9 +7,9 @@ public class RoundTimer extends Thread {
     private final Object lock = new Object();
     private Board board;
 
-    public RoundTimer(double time, Board board) {
+    public RoundTimer(int time, Board board) {
         this.board = board;
-        this.time = Integer.parseInt(Double.toString(time));
+        this.time = time;
         this.setDaemon(true);
     }
 
@@ -18,9 +18,6 @@ public class RoundTimer extends Thread {
      */
     public void end() {
         this.stopped = true;
-        synchronized (lock) {
-            lock.notify();
-        }
     }
 
     /**
@@ -28,15 +25,13 @@ public class RoundTimer extends Thread {
      */
     @Override
     public void run() {
-        synchronized (lock) {
             while (!stopped) {
                 try {
-                    lock.wait(time * 100);
+                    sleep(time);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-        board.nextRound();
-            }
+                board.nextRound();
         }
     }
 }
