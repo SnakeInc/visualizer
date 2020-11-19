@@ -6,8 +6,8 @@ import javafx.scene.shape.Rectangle;
 public class Cell extends Rectangle {
 
     public  Cell () {
-        super.setHeight(13);
-        super.setWidth(13);
+        super.setHeight(11);
+        super.setWidth(11);
         this.setFill(Paint.valueOf("BLACK"));
     }
 }

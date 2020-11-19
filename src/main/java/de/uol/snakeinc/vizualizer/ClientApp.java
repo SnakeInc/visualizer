@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.List;
 
 public class ClientApp extends Application {
@@ -52,9 +53,7 @@ public class ClientApp extends Application {
         convertButton.setText("Start the Game");
         convertButton.setOnMouseClicked(e->{
             if (fileChooser.checkFile()) {
-                board = new Board(fileChooser.getActualFile());
-                board.setSpeed(Integer.parseInt(speedBox.getValue().toString()));
-                root.getChildren().add(board);
+                setUpBoard(fileChooser.getActualFile());
                 board.startGame();
                 initializeUserList();}
             else {
@@ -65,13 +64,21 @@ public class ClientApp extends Application {
         });
     }
 
+    public void setUpBoard(File file) {
+        if (board != null) {
+            root.getChildren().remove(board);
+        }
+        board = new Board(file);
+        root.getChildren().add(board);
+        board.setSpeed(Integer.parseInt(speedBox.getValue().toString()));
+        speedBox.setOnHiding(e -> board.setSpeed(Integer.parseInt(speedBox.getValue().toString())));
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
 
     public void initializeUserList() {
-
-
         for (Integer id : board.getGame().getPlayers().keySet()) {
             String name = board.getGame().getPlayers().get(id);
             Text text = new Text(name);

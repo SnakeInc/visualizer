@@ -46,25 +46,24 @@ public class Board extends GridPane {
         if (roundTimer != null) {
             roundTimer.end();
         }
-
          roundTimer = new RoundTimer(speed, this);
+        roundTimer.start();
      }
 
      public void nextRound () {
         ObservableList<Node> childrens = this.getChildren();
 
-        System.out.println(childrens.size());
-        for (Node node : childrens) {
-            int i = this.getRowIndex(node);
-            int j = this.getColumnIndex(node);
-
-            ((Cell) node).setFill(ClientApp.colorBag(game.getBoards().get(game.getRounds()-rounds)[i][j]));
-        }
-        if (rounds == 0) {
+         if (rounds == 0) {
              roundTimer.end();
-        } else {
+         } else {
              rounds--;
-        }
+             for (Node node : childrens) {
+                 int i = this.getRowIndex(node);
+                 int j = this.getColumnIndex(node);
+
+                 ((Cell) node).setFill(ClientApp.colorBag(game.getBoards().get(game.getRounds() - rounds)[i][j]));
+             }
+         }
      }
 
      public void startGame() {
@@ -76,5 +75,4 @@ public class Board extends GridPane {
      public Game getGame () {
         return game;
      }
-
 }
