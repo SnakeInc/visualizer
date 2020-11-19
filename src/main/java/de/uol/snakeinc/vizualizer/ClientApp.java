@@ -28,6 +28,8 @@ public class ClientApp extends Application {
     FileChooserDialog fileChooser;
     ListView<Text> usersView = new ListView<>();
     ObservableList<Text> users = FXCollections.observableArrayList();
+    Boolean isActive = false;
+
     static List<Color> colors = List.of(
         Color.YELLOW,
         Color.RED,
@@ -65,13 +67,13 @@ public class ClientApp extends Application {
     }
 
     public void setUpBoard(File file) {
-        if (board != null) {
+        if (isActive) {
             root.getChildren().remove(board);
         }
         board = new Board(file);
         root.getChildren().add(board);
         board.setSpeed(Integer.parseInt(speedBox.getValue().toString()));
-        speedBox.setOnHiding(e -> board.setSpeed(Integer.parseInt(speedBox.getValue().toString())));
+        speedBox.setOnHiding(e -> {if(isActive) board.setSpeed(Integer.parseInt(speedBox.getValue().toString()));});
     }
 
     public static void main(String[] args) {
@@ -79,6 +81,9 @@ public class ClientApp extends Application {
     }
 
     public void initializeUserList() {
+        if (isActive) {
+            users.clear();
+        }
         for (Integer id : board.getGame().getPlayers().keySet()) {
             String name = board.getGame().getPlayers().get(id);
             Text text = new Text(name);
@@ -90,6 +95,7 @@ public class ClientApp extends Application {
 
     @Override
     public void start(Stage stage) {
+        isActive = true;
         initialize();
 
         usersView.setItems(users);
