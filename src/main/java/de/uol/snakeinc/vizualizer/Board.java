@@ -20,8 +20,7 @@ public class Board extends GridPane {
 
     public Board (File file) {
         super();
-        this.setMinWidth(1000);
-        this.setMinHeight(1000);
+
         this.setStyle("-fx-background-color: white; -fx-border-color: black");
          try {
               game = Game.getGame(file);

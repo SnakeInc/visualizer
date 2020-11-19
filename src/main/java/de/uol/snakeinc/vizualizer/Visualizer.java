@@ -26,6 +26,16 @@ public class Visualizer extends Application {
     FileChooserDialog fileChooser;
     ListView<Text> usersView = new ListView<>();
     ObservableList<Text> users = FXCollections.observableArrayList();
+    static List<Color> colors = List.of(
+        Color.YELLOW,
+        Color.RED,
+        Color.BLUE,
+        Color.ORANGE,
+        Color.GREEN,
+        Color.LIME,
+        Color.PURPLE,
+        Color.WHITE
+    );
 
 
 
@@ -87,15 +97,7 @@ public class Visualizer extends Application {
     }
 
     public static Color colorBag(int index) {
-        List<Color> colors = new ArrayList<Color>();
-        colors.add(Color.YELLOW);
-        colors.add(Color.RED);
-        colors.add(Color.BLUE);
-        colors.add(Color.ORANGE);
-        colors.add(Color.GREEN);
-        colors.add(Color.LIME);
-        colors.add(Color.PURPLE);
-        colors.add(Color.WHITE);
+
         if (index <= 0) {
             return Color.BLACK;
         }
