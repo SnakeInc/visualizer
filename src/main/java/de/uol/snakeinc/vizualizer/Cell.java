@@ -10,9 +10,4 @@ public class Cell extends Rectangle {
         super.setWidth(13);
         this.setFill(Paint.valueOf("BLACK"));
     }
-
-    public void changeTo (Paint colour) {
-        this.setFill(colour);
-    }
-
 }

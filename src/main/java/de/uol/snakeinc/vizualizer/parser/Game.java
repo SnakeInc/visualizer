@@ -87,6 +87,8 @@ public class Game {
             boards.put(Integer.valueOf(board), boardData.get(board));
         }
 
+        players.put(us, "SnakeInc");
+
         return new Game(rounds, players, us, width, height, boards);
     }
 }
