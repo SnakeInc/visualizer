@@ -1,4 +1,4 @@
-package de.uol.snakeinc.vizualizer;
+package de.uol.snakeinc.vizualizer.gui;
 
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;

@@ -1,4 +1,4 @@
-package de.uol.snakeinc.vizualizer;
+package de.uol.snakeinc.vizualizer.gui;
 
 import java.io.File;
 import javafx.event.ActionEvent;

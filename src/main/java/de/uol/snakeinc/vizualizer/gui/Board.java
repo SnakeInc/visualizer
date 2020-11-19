@@ -1,13 +1,10 @@
-package de.uol.snakeinc.vizualizer;
+package de.uol.snakeinc.vizualizer.gui;
 
+import de.uol.snakeinc.vizualizer.ClientApp;
 import de.uol.snakeinc.vizualizer.parser.Game;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,7 +58,7 @@ public class Board extends GridPane {
             int i = this.getRowIndex(node);
             int j = this.getColumnIndex(node);
 
-            ((Cell) node).setFill(Visualizer.colorBag(game.getBoards().get(game.getRounds()-rounds)[i][j]));
+            ((Cell) node).setFill(ClientApp.colorBag(game.getBoards().get(game.getRounds()-rounds)[i][j]));
         }
         if (rounds == 0) {
              roundTimer.end();
