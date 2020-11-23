@@ -114,7 +114,7 @@
                     <source>11.0.5</source>
                     <target>11.0.5</target>
                     <release>11.0.5</release>
-                    <mainClass>de.uol.snakeinc.vizualizer.Visualizer</mainClass>
+                    <mainClass>de.uol.snakeinc.vizualizer.ClientApp</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -127,7 +127,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>de.uol.snakeinc.vizualizer.Visualizer</mainClass>
+                            <mainClass>de.uol.snakeinc.vizualizer.ClientApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

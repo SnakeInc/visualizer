@@ -1,6 +1,6 @@
 package de.uol.snakeinc.vizualizer.gui;
 
-import de.uol.snakeinc.vizualizer.Visualizer;
+import de.uol.snakeinc.vizualizer.ClientApp;
 import de.uol.snakeinc.vizualizer.parser.Game;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -72,7 +72,7 @@ public class Board extends GridPane {
                  int i = this.getRowIndex(node);
                  int j = this.getColumnIndex(node);
 
-                 ((Cell) node).setFill(Visualizer.colorBag(game.getBoards().get(getActualRound())[i][j]));
+                 ((Cell) node).setFill(ClientApp.colorBag(game.getBoards().get(getActualRound())[i][j]));
              }
          }
      }
