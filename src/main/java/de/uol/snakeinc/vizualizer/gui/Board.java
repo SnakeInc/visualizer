@@ -69,8 +69,8 @@ public class Board extends GridPane {
              rounds--;
              actualizeActualRoundProperty();
              for (Node node : childrens) {
-                 int i = this.getRowIndex(node);
-                 int j = this.getColumnIndex(node);
+                 int j = this.getRowIndex(node);
+                 int i = this.getColumnIndex(node);
 
                  ((Cell) node).setFill(ClientApp.colorBag(game.getBoards().get(getActualRound())[i][j]));
              }
