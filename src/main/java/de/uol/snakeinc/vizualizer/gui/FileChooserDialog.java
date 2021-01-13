@@ -1,6 +1,8 @@
 package de.uol.snakeinc.vizualizer.gui;
 
 import java.io.File;
+
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,11 +14,15 @@ import javafx.stage.Stage;
 
 public class FileChooserDialog extends VBox {
 
-    File actualFile;
+    private File actualFile;
+    private FileChooser fileChooser = null;
+    private static SimpleObjectProperty<File> lastKnownDirectoryProperty = new SimpleObjectProperty<>();
 
     public FileChooserDialog(Stage stage) {
-        final FileChooser fileChooser = new FileChooser();
-
+        fileChooser = getInstance();
+        //String homePath = System.getProperty("user.home");
+        //File defaultDirectory = new File(homePath + "/Downloads");
+        //fileChooser.setInitialDirectory(defaultDirectory);
         final Button openButton = new Button("Open a Game...");
 
         openButton.setOnAction(
@@ -26,6 +32,7 @@ public class FileChooserDialog extends VBox {
                     File file = fileChooser.showOpenDialog(stage);
                     if (file != null) {
                         openFile(file);
+                        lastKnownDirectoryProperty.setValue(file.getParentFile());
                     }
                 }
             });
@@ -38,6 +45,14 @@ public class FileChooserDialog extends VBox {
         inputGridPane.getChildren().addAll(openButton);
         this.getChildren().addAll(inputGridPane);
         this.setPadding(new Insets(12, 12, 12, 12));
+    }
+
+    private FileChooser getInstance(){
+        if(fileChooser == null) {
+            fileChooser = new FileChooser();
+            fileChooser.initialDirectoryProperty().bindBidirectional(lastKnownDirectoryProperty);
+        }
+        return fileChooser;
     }
 
     private void openFile(File file) {
